@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Livro;
+use App\Models\Autor;
+use App\Models\Assunto;
 
 class LivroController extends Controller
 {
@@ -22,7 +24,10 @@ class LivroController extends Controller
      */
     public function create()
     {
-        return view('livro.create');
+        $autores = Autor::all();
+        $assuntos = Assunto::all();
+
+        return view('livro.create', compact('autores', 'assuntos'));
     }
 
     /**
@@ -31,7 +36,11 @@ class LivroController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        Livro::create($data);
+
+        $livro = Livro::create($data);
+
+        $livro->autores()->attach($request->input('autores'));
+        $livro->assuntos()->attach($request->input('assuntos'));
 
         return redirect()->route('livro.index');
     }

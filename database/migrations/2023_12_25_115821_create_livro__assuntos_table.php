@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedInteger('Assunto_CodAs');
             $table->foreign('Assunto_CodAs')->references('CodAs')->on('Assunto');
 
-
             $table->primary(['Livro_CodLi','Assunto_CodAs']);
         });
     }

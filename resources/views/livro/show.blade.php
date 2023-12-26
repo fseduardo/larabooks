@@ -4,15 +4,28 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Assunto</h1>
+            <h1>Livro</h1>
            
-            <div>{{ $livro->CodAs }}</div>
-            <div>{{ $livro->Titulo }}</div>
-            <div>{{ $livro->Editora }}</div>
-            <div>{{ $livro->Edicao }}</div>
-            <div>{{ $livro->AnoPublicacao }}</div> 
-            <div>{{ $livro->Valor }}</div>
-            
+            <div>Cod: {{ $livro->CodLi }}</div>
+            <div>Título: {{ $livro->Titulo }}</div>
+            <div>Editora: {{ $livro->Editora }}</div>
+            <div>Edição: {{ $livro->Edicao }}</div>
+            <div>Ano de Publicação: {{ $livro->AnoPublicacao }}</div> 
+            <div>Valor: {{ $livro->Valor }}</div>
+
+            Autores
+            <ul>
+            @foreach($livro->autores as $autor)
+                <li>{{ $autor->Nome }}</li>
+            @endforeach
+            </ul>
+
+            Assunto
+            <ul>
+            @foreach($livro->assuntos as $assuntos)
+                <li>{{ $assuntos->Descricao }}</li>
+            @endforeach
+            </ul>
         </div>
     </div>
 </div>
