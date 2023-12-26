@@ -12,4 +12,8 @@ class Livro extends Model
     protected $table = 'Livro';
 
     protected $primaryKey = 'CodLi';
+
+    protected $fillable = [
+        'Titulo', 'Editora', 'Edicao', 'AnoPublicacao', 'Valor'
+    ];
 }

@@ -18,3 +18,4 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::resource('autor', App\Http\Controllers\AutorController::class, ['name' => 'autor.']);
 Route::resource('assunto', App\Http\Controllers\AssuntoController::class, ['name' => 'assunto.']);
+Route::resource('livro', App\Http\Controllers\LivroController::class, ['name' => 'livro.']);

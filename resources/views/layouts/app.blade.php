@@ -28,7 +28,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Livros</a>
+                        <a class="nav-link" href="{{ route('livro.index') }}">Livros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('autor.index') }}">Autores</a>
