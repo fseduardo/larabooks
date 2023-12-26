@@ -12,4 +12,6 @@ class Autor extends Model
     protected $table = 'Autor';
 
     protected $primaryKey = 'CodAu';
+
+    protected $fillable = ['Nome'];
 }
