@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('Livro', function (Blueprint $table) {
-            $table->unsignedInteger('CodLi')->primary();
+            $table->unsignedInteger('CodLi')->autoIncrement();
             $table->string('Titulo', 40);
             $table->string('Editora', 40);
             $table->unsignedInteger('Edicao');
             $table->char('AnoPublicacao', 4);
-            $table->decimal('Valor',10,2);
+            $table->decimal('Valor', 10, 2);
             $table->timestamps();
         });
     }
