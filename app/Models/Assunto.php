@@ -12,4 +12,6 @@ class Assunto extends Model
     protected $table = 'Assunto';
 
     protected $primaryKey = 'CodAs';
+
+    protected $fillable = ['Descricao'];
 }
