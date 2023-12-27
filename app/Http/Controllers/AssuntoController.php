@@ -12,7 +12,7 @@ class AssuntoController extends Controller
      */
     public function index()
     {
-        $assuntos = Assunto::all();
+        $assuntos = Assunto::query()->latest()->paginate(10);
 
         return view('assunto.index', compact('assuntos'));
     }

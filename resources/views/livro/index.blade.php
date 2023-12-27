@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Livro Index</h1>
-            <a href="{{ route('livro.create') }}">Adicionar</a>
-            <table class="table">
+            <h1>Livros</h1>
+            <a href="{{ route('livro.create') }}" class="btn btn-success mt-1 mb-2">Adicionar</a>
+            <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>CodLi</th>
@@ -27,20 +27,26 @@
                         <td>{{ $livro->Edicao }}</td>
                         <td>{{ $livro->AnoPublicacao }}</td>
                         <td>R$ {{ \App\Util\FormatNumber::formatReal($livro->Valor ) }}</td>
-                        <td>
-                            <a href="{{ route('livro.show', $livro->CodLi) }}">Visualizar</a>
-                            <a href="{{ route('livro.edit', $livro->CodLi) }}">Editar</a>
-                            <form action="{{ route('livro.destroy', $livro->CodLi) }}" method="POST">
+                        <td class="text-end">
+                            <a href="{{ route('livro.show', $livro->CodLi) }}" class="btn btn-sm btn-primary">Visualizar</a>
+                            <a href="{{ route('livro.edit', $livro->CodLi) }}" class="btn btn-sm btn-info" >Editar</a>
+                            <form action="{{ route('livro.destroy', $livro->CodLi) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-small" type="submit">Deletar</button>
+                                <button class="btn btn-sm btn-danger" type="submit">Deletar</button>
                             </form>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+
+            {{ $livros->links('vendor.pagination.bootstrap-5') }}
+           
         </div>
+        
+               
+
     </div>
 </div>
 @endsection

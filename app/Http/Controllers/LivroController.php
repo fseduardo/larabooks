@@ -15,7 +15,7 @@ class LivroController extends Controller
      */
     public function index()
     {
-        $livros = Livro::all();
+        $livros = Livro::query()->latest()->paginate(5);
 
         return view('livro.index', compact('livros'));
     }
