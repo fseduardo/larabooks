@@ -11,6 +11,7 @@
                     <tr>
                         <th>CodAu</th>
                         <th>Nome</th>
+                        <th>Livros</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -19,6 +20,13 @@
                     <tr>
                         <td>{{ $autor->CodAu }}</td>
                         <td>{{ $autor->Nome }}</td>
+                        <td>
+                            <ul>
+                                @foreach($autor->livros as $livro)
+                                    <li><a href="{{ route('livro.show', $livro) }}">{{ $livro->Titulo }}</a></li>
+                                @endforeach
+                            </ul>
+                        </td>
                         <td class="text-end">
                             <a href="{{ route('autor.show', $autor->CodAu) }}" class="btn btn-sm btn-primary">Visualizar</a>
                             <a href="{{ route('autor.edit', $autor->CodAu) }}" class="btn btn-sm btn-info">Editar</a>

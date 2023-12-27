@@ -45,14 +45,16 @@
 
     <!-- Begin page content -->
     <main class="flex-shrink-0">
-        <div class="container">
+        <div class="container mt-2">
             <div class="row">
                 <div class="col-12">
-                    @if(flash()->message)
-                        <div>
+                    @if (flash()->message)
+                        <div class="alert {{ flash()->class ?: 'alert-success'  }}  alert-dismissible fade show" role="alert">
                             {{ flash()->message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
+
                 
                     {{-- Display Laravel validation error messages --}}
                     @if($errors->any())
@@ -75,9 +77,9 @@
         @yield('content')
     </main>
 
-    <footer class="footer mt-auto py-3 bg-body-tertiary">
-        <div class="container">
-            <span class="text-body-secondary">2023.</span>
+    <footer class="footer mt-5 py-3 bg-body-tertiary">
+        <div class="container text-center">
+            <span class="text-body-secondary">Dev: Eduardo Souza - @fseduardo 2023.</span>
         </div>
     </footer>
 

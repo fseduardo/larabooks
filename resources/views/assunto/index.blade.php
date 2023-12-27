@@ -11,6 +11,7 @@
                     <tr>
                         <th>CodAs</th>
                         <th>Descrição</th>
+                        <th>Livros</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -19,6 +20,13 @@
                     <tr>
                         <td>{{ $assunto->CodAs }}</td>
                         <td>{{ $assunto->Descricao }}</td>
+                        <td>
+                            <ul>
+                                @foreach($assunto->livros as $livro)
+                                    <li><a href="{{ route('livro.show', $livro) }}">{{ $livro->Titulo }}</a></li>
+                                @endforeach
+                            </ul>
+                        </td>
                         <td class="text-end">
                             <a href="{{ route('assunto.show', $assunto->CodAs) }}" class="btn btn-sm btn-primary">Visualizar</a>
                             <a href="{{ route('assunto.edit', $assunto->CodAs) }}" class="btn btn-sm btn-info">Editar</a>

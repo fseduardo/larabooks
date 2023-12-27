@@ -14,4 +14,9 @@ class Autor extends Model
     protected $primaryKey = 'CodAu';
 
     protected $fillable = ['Nome'];
+
+    public function livros()
+    {
+        return $this->belongsToMany(Livro::class, 'Livro_Autor', 'Autor_CodAu', 'Livro_CodLi');
+    }
 }

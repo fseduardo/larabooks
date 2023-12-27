@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Livro extends Model
 {
     use HasFactory;
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($livro) {
+            // Antes de excluir o livro, exclua suas relações
+            $livro->autores()->detach();
+            $livro->assuntos()->detach();
+        });
+    }
     
     protected $table = 'Livro';
 

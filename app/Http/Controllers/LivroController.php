@@ -42,7 +42,7 @@ class LivroController extends Controller
         $livro->autores()->attach($request->input('autores'));
         $livro->assuntos()->attach($request->input('assuntos'));
 
-        flash('Livro adicionado com sucesso', 'success');
+        flash('Livro adicionado com sucesso');
 
         return redirect()->route('livro.index');
     }
@@ -74,7 +74,7 @@ class LivroController extends Controller
         $livro->autores()->sync($request->input('autores'));
         $livro->assuntos()->sync($request->input('assuntos'));
 
-        flash('Livro atualizado com sucesso', 'success');
+        flash('Livro atualizado com sucesso');
 
         return redirect()->route('livro.index');
     }
@@ -85,6 +85,8 @@ class LivroController extends Controller
     public function destroy(Livro $livro)
     {
         $livro->delete();
+
+        flash('Livro excluído com sucesso');
 
         return redirect()->route('livro.index');
     }

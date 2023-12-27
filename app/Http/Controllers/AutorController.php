@@ -34,6 +34,8 @@ class AutorController extends Controller
         $data = $request->all();
         Autor::create($data);
 
+        flash('Autor adicionado com sucesso');
+
         return redirect()->route('autor.index');
     }
 
@@ -61,6 +63,8 @@ class AutorController extends Controller
         $data = $request->all();
         $autor->update($data);
 
+        flash('Autor atualizado com sucesso');
+
         return redirect()->route('autor.index');
     }
 
@@ -69,10 +73,21 @@ class AutorController extends Controller
      */
     public function destroy(Autor $autor)
     {
-        $autor->delete();
+        try {
+            $autor->delete();
+            flash('Autor excluído com sucesso');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Check for a specific error code (1451 for MySQL)
+            if ($e->getCode() === '23000') {
+                flash('Não é possível excluir o autor porque ele está vinculado a um ou mais livros', 'alert-danger');
+            } else {
+                flash('Erro ao excluir autor', 'alert-danger');
+            }
+        }
 
         return redirect()->route('autor.index');
     }
+
 
     /**
      * Return result from serach 

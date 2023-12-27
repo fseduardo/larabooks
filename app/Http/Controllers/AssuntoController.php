@@ -33,6 +33,8 @@ class AssuntoController extends Controller
         $data = $request->all();
         Assunto::create($data);
 
+        flash('Assunto adicionado com sucesso');
+
         return redirect()->route('assunto.index');
     }
 
@@ -60,6 +62,8 @@ class AssuntoController extends Controller
         $data = $request->all();
         $assunto->update($data);
 
+        flash('Assunto atualizado com sucesso');
+
         return redirect()->route('assunto.index');
     }
 
@@ -68,7 +72,17 @@ class AssuntoController extends Controller
      */
     public function destroy(Assunto $assunto)
     {
-        $assunto->delete();
+        try {
+            $assunto->delete();
+            flash('Assunto excluído com sucesso');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Check for a specific error code (1451 for MySQL)
+            if ($e->getCode() === '23000') {
+                flash('Não é possível excluir o assunto porque ele está vinculado a um ou mais livros', 'alert-danger');
+            } else {
+                flash('Erro ao excluir assunto', 'alert-danger');
+            }
+        }
 
         return redirect()->route('assunto.index');
     }

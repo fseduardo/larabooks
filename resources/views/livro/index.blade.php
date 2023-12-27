@@ -11,6 +11,8 @@
                     <tr>
                         <th>CodLi</th>
                         <th>Titulo</th>
+                        <th>Autores</th>
+                        <th>Assuntos</th>
                         <th>Editora</th>
                         <th>Edicao</th>
                         <th>Ano de Publicação</th>
@@ -23,6 +25,20 @@
                     <tr>
                         <td>{{ $livro->CodLi }}</td>
                         <td>{{ $livro->Titulo }}</td>
+                        <td>
+                            <ul>
+                                @foreach($livro->autores as $autor)
+                                    <li><a href="{{ route('autor.show', $autor) }}">{{ $autor->Nome }}</a></li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                @foreach($livro->assuntos as $assunto)
+                                    <li><a href="{{ route('assunto.show', $assunto) }}">{{ $assunto->Descricao }}</a></li>
+                                @endforeach
+                            </ul>
+                        </td>
                         <td>{{ $livro->Editora }}</td>
                         <td>{{ $livro->Edicao }}</td>
                         <td>{{ $livro->AnoPublicacao }}</td>
