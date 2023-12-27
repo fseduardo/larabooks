@@ -72,4 +72,16 @@ class AssuntoController extends Controller
 
         return redirect()->route('assunto.index');
     }
+
+    /**
+     * Return result from serach 
+     */
+    public function search(Request $request)
+    {
+        $search = $request->q;
+        $result = Assunto::where('Descricao', 'LIKE', "%{$search}%")->get(['CodAs', 'Descricao']);
+        //Melhoria: Implementar Paginação
+
+        return response()->json($result);
+    }
 }

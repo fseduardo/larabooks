@@ -26,7 +26,7 @@
                         <td>{{ $livro->Editora }}</td>
                         <td>{{ $livro->Edicao }}</td>
                         <td>{{ $livro->AnoPublicacao }}</td>
-                        <td>{{ $livro->Valor }}</td>
+                        <td>R$ {{ \App\Util\FormatNumber::formatReal($livro->Valor ) }}</td>
                         <td>
                             <a href="{{ route('livro.show', $livro->CodLi) }}">Visualizar</a>
                             <a href="{{ route('livro.edit', $livro->CodLi) }}">Editar</a>

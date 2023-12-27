@@ -72,4 +72,16 @@ class AutorController extends Controller
 
         return redirect()->route('autor.index');
     }
+
+    /**
+     * Return result from serach 
+     */
+    public function search(Request $request)
+    {
+        $search = $request->q;
+        $result = Autor::where('Nome', 'LIKE', "%{$search}%")->get(['CodAu', 'Nome']);
+        //Melhoria: Implementar Paginação
+
+        return response()->json($result);
+    }
 }

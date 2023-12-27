@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreLivroRequest;
 use Illuminate\Http\Request;
 use App\Models\Livro;
 use App\Models\Autor;
@@ -24,16 +25,15 @@ class LivroController extends Controller
      */
     public function create()
     {
-        $autores = Autor::all();
-        $assuntos = Assunto::all();
+        $livro = new Livro;
 
-        return view('livro.create', compact('autores', 'assuntos'));
+        return view('livro.create', compact('livro'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreLivroRequest $request)
     {
         $data = $request->all();
 
@@ -41,6 +41,8 @@ class LivroController extends Controller
 
         $livro->autores()->attach($request->input('autores'));
         $livro->assuntos()->attach($request->input('assuntos'));
+
+        flash('Livro adicionado com sucesso', 'success');
 
         return redirect()->route('livro.index');
     }
@@ -58,16 +60,21 @@ class LivroController extends Controller
      */
     public function edit(Livro $livro)
     {
-        return view('livro.edit', compact('autor'));
+        return view('livro.edit', compact('livro'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Livro $livro)
+    public function update(StoreLivroRequest $request, Livro $livro)
     {
         $data = $request->all();
         $livro->update($data);
+
+        $livro->autores()->sync($request->input('autores'));
+        $livro->assuntos()->sync($request->input('assuntos'));
+
+        flash('Livro atualizado com sucesso', 'success');
 
         return redirect()->route('livro.index');
     }
