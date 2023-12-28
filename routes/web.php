@@ -24,3 +24,5 @@ Route::resource('assunto', App\Http\Controllers\AssuntoController::class, ['name
 
 
 Route::resource('livro', App\Http\Controllers\LivroController::class, ['name' => 'livro.']);
+
+Route::get("relatorio/geral", [App\Http\Controllers\RelatorioController::class, "geral"])->name('relatorio.geral');

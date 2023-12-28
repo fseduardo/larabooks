@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('assunto.index') }}">Assuntos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('relatorio.geral') }}" target="_blank">Relatório</a>
+                    </li>
                 </ul>
                 
             </div>
