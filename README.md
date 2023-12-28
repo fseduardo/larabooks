@@ -31,8 +31,8 @@ Larabook é um projeto experimental, demostrativo, projetado para exibir compet�
 - CRUS de Assuntos
 - Layout Bootstrap
 - Visualização dos relacionamentos
-- Validções de dados no frontend e backend
-- Mascara para input de numeros
+- Validações de dados no frontend e backend
+- Máscara para input de numeros
 - Mensagens ao ususario com spatie/laravel-flash https://github.com/spatie/laravel-flash
 - Select2 com pesquisa com ajax nos relaiomentos n:n (Livro - Autor e Livro - Assunto)
 - Relatorio utilizando views
@@ -40,9 +40,9 @@ Larabook é um projeto experimental, demostrativo, projetado para exibir compet�
 
 ## Próximas Melhorias 
 
-- Dashborad com Graficos
+- Dashboard com Gráficos
 - Geração de PDF
 - Aprimorar tratamento de erros
-- Tradução de mensagens de validção do Laravel
-- Maior compontentização do frontend
+- Tradução de mensagens de Validação do Laravel
+- Maior Componentização do frontend
 
