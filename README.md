@@ -35,11 +35,13 @@ Larabook é um projeto experimental, demostrativo, projetado para exibir compet�
 - Mascara para input de numeros
 - Mensagens ao ususario com spatie/laravel-flash https://github.com/spatie/laravel-flash
 - Select2 com pesquisa com ajax nos relaiomentos n:n (Livro - Autor e Livro - Assunto)
+- Relatorio utilizando views
 
 
 ## Próximas Melhorias 
 
-- Relatorio
+- Dashborad com Graficos
+- Geração de PDF
 - Aprimorar tratamento de erros
 - Tradução de mensagens de validção do Laravel
 - Maior compontentização do frontend

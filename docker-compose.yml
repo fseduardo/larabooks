@@ -20,7 +20,8 @@ services:
       - app-network
 
   db:
-    image: arm64v8/mysql:oracle
+    #image: arm64v8/mysql:oracle #Chip ARM
+    image: mysql:latest
     container_name: larabook_db
     restart: unless-stopped
     ports:

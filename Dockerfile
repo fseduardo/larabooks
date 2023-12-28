@@ -23,7 +23,12 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Definir diretório de trabalho
 WORKDIR /var/www
 
+# Copy the initialization script into the container
+COPY init-script.sh /usr/local/bin/init-script
+RUN chmod +x /usr/local/bin/init-script
+
+
 # Expor porta 9000 e iniciar processo do php-fpm server
 EXPOSE 9000
 
-CMD ["php-fpm"]
+CMD ["/usr/local/bin/init-script"]
